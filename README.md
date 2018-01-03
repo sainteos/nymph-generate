@@ -45,18 +45,35 @@ namespace generated {
 All you have to give this function is a shared_ptr to the chaiscript object within your program. Make sure this is called before loading and running any scripts, otherwise they will not be there for your scripts to see.
 
 ## Flagging Header Files For Processing
-There are flags that are used to let `nymph-generate` know which classes and methods to target. To let `nymph-generate` know that it needs to start processing, it looks for comments starting with:
+There are flags that are used to let `nymph-generate` know which classes and methods to target. To let `nymph-generate` know that it needs to start processing, it looks for comments starting with `//=`. Right now there are 4 basic flags that one needs to know before being able to run `nymph-generate` on your project.
 ```c++
-//=
-```
+/* This marks a class as scriptable. This lets nymph-generate know that this class should
+ * be processed by nymph-generate. */
 
-More to come, TODO
+//= SCRIPTABLE
+
+/* This marks the scriptable class as having base classes that are also scriptable within
+ * chaiscript. Only specify classes that are also scriptable themselves by listing their
+ * names exactly as they are defined and separated by spaces */
+
+//= SCRIPTABLE BASES ClassName1 ClassName2 ...
+
+/* This marks the beginning point of methods within a class that should be exposed within
+ * the chaiscript module. */
+
+//= BEGIN SCRIPTABLE
+
+/* This marks the ending point of methods within a class that should be exposed within
+ * the chaiscript module. */
+
+//= END SCRIPTABLE
+```
 
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment. You can also run `bin/nymph-generate` to run this gem without installing it. This is good for development and testing.
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org). You can also run `bundle exec rake generate` to run this gem with rake without installing it.
 
 ## Contributing
 
