@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+require "bundler/setup"
+require "nymph/generate"
+require "nymph/generate/generator"
+
+generator = Nymph::Generate::Generator.new
+
+if ARGV.count == 2
+  generator.run ARGV[0], ARGV[1]
+elsif ARGV.count == 1
+  generator.run ARGV[0], "#{ARGV[0]}/generated"
+else
+  generator.run "#{`pwd`.chomp!}/src", "#{`pwd`.chomp!}/generated"
+end
