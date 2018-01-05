@@ -10,5 +10,5 @@ if ARGV.count == 2
 elsif ARGV.count == 1
   generator.run ARGV[0], "#{ARGV[0]}/generated"
 else
-  generator.run "#{`pwd`.chomp!}/src", "#{`pwd`.chomp!}/generated"
+  generator.run "#{`pwd`.chomp!}/src", "#{`pwd`.chomp!}/src/generated"
 end
