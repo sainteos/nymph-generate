@@ -67,6 +67,15 @@ There are flags that are used to let `nymph-generate` know which classes and met
  * the chaiscript module. */
 
 //= END SCRIPTABLE
+
+/* This marks an enumeration that should be exposed to chaiscript.
+ * In this instance, a Chaiscript class called Banana and it will
+ * create global consts of names Banana_UNDERRIPE, Banana_RIPE, Banana_OVERRIPE.
+ * Contained in the banana class are necessary comparison operators and dictionary
+ * of enum val : enum name.
+ */
+//= SCRIPTABLE ENUM
+enum Banana : unsigned int { UNDERRIPE, RIPE, OVERRIPE };
 ```
 
 ## Development
